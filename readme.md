@@ -3,6 +3,7 @@ Java XML Helper Utilities is a set of utilites written in Java that can help you
 Here a a couple of examples against the XML Payload below:
 
 **Example 1 - Modify the multiple items using a TreeMap.**
+
 		long newTime = System.currentTime();
 		String xmlPayLoad = readFileAsString(payLoadPath + "/payLoad.xml");
 		TreeMap<String, String> header = new TreeMap<String, String>();
@@ -15,10 +16,10 @@ Here a a couple of examples against the XML Payload below:
 .
 
 **Example 2 - Modify a single attribute**
+
 		long notAfter = System.currentime();
 		itemPath = "//payload/joinAttribute/notAfter/text()";
-		xmlpayLoad = XPathHelper.modifyXMLItem(xmlpayLoad, itemPath, Long.toString(notAfter));
-    
+		xmlpayLoad = XPathHelper.modifyXMLItem(xmlpayLoad, itemPath, Long.toString(notAfter));    
 
 **XML Payload**
 
