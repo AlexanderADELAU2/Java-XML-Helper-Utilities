@@ -2,20 +2,22 @@ Java XML Helper Utilities is a set of utilites written in Java that can help you
 
 Here a a couple of examples against the XML Payload below:
 
-**Example 1 - Modify the <type>...</type> using a TreeMap that could contain main entries which you can then write back in a single statement. **
-
-		xmlPayLoad = readFileAsString(payLoadPath + "/payLoad.xml");
+**Example 1 - Modify the multiple items using a TreeMap.**
+		long newTime = System.currentTime();
+		String xmlPayLoad = readFileAsString(payLoadPath + "/payLoad.xml");
 		TreeMap<String, String> header = new TreeMap<String, String>();
 		XPathHelperCommon xph = new XPathHelperCommon();
 		header = xph.findMultipleXMLItems(xmlPayLoad, "//header/*");
 		header.put("type", "newProcess");
+		newTime += Long.parseLong(header.get("taskElapsedTime"));
+		header.put("taskElapsedTime", Long.toString(newTime));
 		xmlPayLoad = xph.modifyMultipleXMLItems(xmlPayLoad, "//header/*", header);
 .
 
 **Example 2 - Modify a single attribute**
-
+		long notAfter = System.currentime();
 		itemPath = "//payload/joinAttribute/notAfter/text()";
-		payLoad = XPathHelper.modifyXMLItem(payLoad, itemPath, Long.toString(notAfter));
+		xmlpayLoad = XPathHelper.modifyXMLItem(xmlpayLoad, itemPath, Long.toString(notAfter));
     
 
 **XML Payload**
